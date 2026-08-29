@@ -74,7 +74,7 @@ class ESPSomfySunSensor(ESPSomfyEntity, BinarySensorEntity):
             self._attr_unique_id = f"sun_{controller.unique_id}_{self._shade_id}"
             self._sensor_type = "motor"
 
-        # 🟢 CORRECTION : Normes de nommage Home Assistant
+        #Normes de nommage Home Assistant
         self._attr_has_entity_name = True
         self._attr_translation_key = "sun_sensor"  # Utilisation de la propriété _attr officielle
 
@@ -146,7 +146,7 @@ class ESPSomfyWindSensor(ESPSomfyEntity, BinarySensorEntity):
             self._attr_unique_id = f"wind_{controller.unique_id}_{self._shade_id}"
             self._sensor_type = "motor"
 
-        # 🟢 CORRECTION : Normes de nommage Home Assistant
+        #Normes de nommage Home Assistant
         self._attr_has_entity_name = True
         self._attr_translation_key = "wind_sensor"  # Utilisation de la propriété _attr officielle
 

@@ -55,7 +55,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     controller: ESPSomfyController = hass.data[DOMAIN].get(entry.entry_id)
     if controller is not None:
         await controller.ws_close()
-        # 🟢 Simplification conforme aux normes récentes de HA pour le déchargement
+        #Simplification conforme aux normes récentes de HA pour le déchargement
         if unload_ok := await hass.config_entries.async_unload_platforms(
             entry, PLATFORMS
         ):

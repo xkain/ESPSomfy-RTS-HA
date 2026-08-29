@@ -333,7 +333,7 @@ class ESPSomfyController(DataUpdateCoordinator):
         )
         dev_class = CoverDeviceClass.SHADE
 
-        # 🟢 CORRECTION : On ne force plus device_id pour laisser HA générer l'appareil
+        # On ne force plus device_id pour laisser HA générer l'appareil
         # basé sur le DeviceInfo de la classe de l'entité.
         entities.async_get_or_create(
             domain=DOMAIN,
@@ -387,7 +387,7 @@ class ESPSomfyController(DataUpdateCoordinator):
                 case _:
                     dev_class = CoverDeviceClass.SHADE
 
-        # 🟢 CORRECTION : Retrait du device_id en dur pour permettre la création de l'appareil dédié
+        # Retrait du device_id en dur pour permettre la création de l'appareil dédié
         entities.async_get_or_create(
             domain=DOMAIN,
             platform=Platform.COVER,
@@ -903,7 +903,7 @@ class ESPSomfyAPI:
         url = f"https://api.github.com/repos/xkain/ESPSomfy-RTS/releases/tags/{version}"
         headers = {
             "Accept": "application/vnd.github.v3+json",
-            "User-Agent": "HomeAssistant-ESPSomfyRTS-Integration" # 🟢 Ajout pour éviter les rejets de l'API GitHub
+            "User-Agent": "HomeAssistant-ESPSomfyRTS-Integration"
         }
 
         try:

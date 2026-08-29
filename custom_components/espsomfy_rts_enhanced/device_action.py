@@ -59,7 +59,7 @@ async def async_get_actions(
     actions = await toggle_entity.async_get_actions(hass, device_id, DOMAIN)
     registry = er.async_get(hass)
     for entry in er.async_entries_for_device(registry, device_id):
-        # 🟢 CORRECTION : Détection basée sur la fin de l'entity_id suite au changement de norme de nommage
+        # Détection basée sur la fin de l'entity_id suite au changement de norme de nommage
         if entry.entity_id.startswith("button.") and entry.entity_id.endswith("_reboot"):
             actions.append(
                 {

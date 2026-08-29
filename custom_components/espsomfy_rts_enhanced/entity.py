@@ -26,7 +26,7 @@ class ESPSomfyEntity(CoordinatorEntity[ESPSomfyController], Entity):
     @property
     def device_info(self) -> DeviceInfo | None:
         """Device info."""
-        # 🟢 Cas 1 : L'entité est liée à un Groupe spécifique
+        # L'entité est liée à un Groupe spécifique
         if self._data and "groupId" in self._data:
             group_id = self._data["groupId"]
             return DeviceInfo(
@@ -37,7 +37,7 @@ class ESPSomfyEntity(CoordinatorEntity[ESPSomfyController], Entity):
                 via_device=(DOMAIN, self.controller.unique_id),
             )
 
-        # 🟢 Cas 2 : L'entité est liée à un Volet/Store (Shade) spécifique
+        # L'entité est liée à un Volet/Store (Shade) spécifique
         if self._data and "shadeId" in self._data:
             shade_id = self._data["shadeId"]
             return DeviceInfo(
@@ -48,7 +48,7 @@ class ESPSomfyEntity(CoordinatorEntity[ESPSomfyController], Entity):
                 via_device=(DOMAIN, self.controller.unique_id),
             )
 
-        # 🟢 Cas 3 (Par défaut) : L'entité est liée à la passerelle/hub globale
+        # (Par défaut) : L'entité est liée à la passerelle/hub globale
         return DeviceInfo(
             configuration_url=self.controller.api.get_config_url(),
             identifiers={(DOMAIN, self.controller.unique_id)},

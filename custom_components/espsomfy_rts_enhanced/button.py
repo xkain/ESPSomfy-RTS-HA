@@ -29,6 +29,19 @@ SVC_REBOOT = "reboot"
 SVC_BACKUP = "backup"
 
 
+def _rotate_backups(backup_dir: str, keep: int = 5) -> None:
+    """Delete the oldest backup files, keeping only the most recent ones.
+
+    Blocking file I/O - must be run via hass.async_add_executor_job.
+    """
+    if not os.path.exists(backup_dir):
+        return
+    files = glob.glob(os.path.join(backup_dir, "*.backup"))
+    files.sort(key=os.path.getmtime, reverse=True)
+    for file_path in files[keep:]:
+        os.remove(file_path)
+
+
 @dataclass
 class ESPSomfyButtonDescriptionMixin:
     """Mixin for entity description."""
@@ -149,25 +162,14 @@ class ESPSomfyButton(ESPSomfyEntity, ButtonEntity):
             method = getattr(self._controller.api, self._action["apimethod"])
             await method()
 
-        # 2. 🟢 AJOUT : Si c'est le bouton backup, on gère la rotation des 5 fichiers
+        # 2. Si c'est le bouton backup, on gère la rotation des 5 fichiers
         if self.entity_description.key == "backup":
             try:
                 # On récupère le chemin du dossier des sauvegardes
                 # (S'adapte dynamiquement selon l'adresse définie dans ton contrôleur)
                 backup_dir = self.hass.config.path(f"ESPSomfyRTS_{self._controller.unique_id}")
 
-                if os.path.exists(backup_dir):
-                    # Trouver tous les fichiers .backup dans ce dossier
-                    files = glob.glob(os.path.join(backup_dir, "*.backup"))
-
-                    # Trier les fichiers par date de modification (du plus récent au plus vieux)
-                    files.sort(key=os.path.getmtime, reverse=True)
-
-                    # Si on a plus de 5 fichiers, on supprime les plus anciens
-                    if len(files) > 5:
-                        files_to_delete = files[5:]
-                        for file_path in files_to_delete:
-                            os.remove(file_path)
+                await self.hass.async_add_executor_job(_rotate_backups, backup_dir)
             except Exception:
                 # Sécurité pour éviter de bloquer l'intégration en cas d'erreur de droits sur les fichiers
                 pass

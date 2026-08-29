@@ -72,7 +72,7 @@ class ESPSomfySunSwitch(ESPSomfyEntity, SwitchEntity):
         self._group_id = None
         self._attr_icon = "mdi:white-balance-sunny"
 
-        # 🟢 CORRECTION : Normes de nommage et traduction HA
+        # Normes de nommage et traduction HA
         self._attr_has_entity_name = True
         self._attr_translation_key = "sun_mode_switch"
         self._attr_entity_category = EntityCategory.CONFIG
@@ -160,7 +160,7 @@ class ESPSomfyBinarySwitch(ESPSomfyEntity, SwitchEntity):
         self._shade_id = None
         self._group_id = None
 
-        # 🟢 CORRECTION : Normes de nommage et traduction HA
+        # Normes de nommage et traduction HA
         self._attr_has_entity_name = True
         self._attr_translation_key = "dry_contact_switch"
 

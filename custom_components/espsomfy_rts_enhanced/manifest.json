@@ -15,7 +15,7 @@
       "deviceType": "urn:schemas-xkain-org:device:Somfy:1"
     }
   ],
-  "version": "2.5.6",
+  "version": "2.5.7",
   "zeroconf": [
     {
       "type": "_espsomfy_rts._tcp.local.",
