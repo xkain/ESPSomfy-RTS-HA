@@ -1,12 +1,12 @@
 <div align="center">
 
-[![GitHub Release](https://img.shields.io/github/release/xkain/ESPSomfy-RTS-HA-enhanced.svg?style=for-the-badge)](https://github.com/xkain/ESPSomfy-RTS-HA-enhanced/releases) [![GitHub Activity](https://img.shields.io/github/last-commit/xkain/ESPSomfy-RTS-HA?style=for-the-badge)](https://github.com/xkain/ESPSomfy-RTS-HA-enhanced/commits/main) [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+[![GitHub Release](https://img.shields.io/github/release/xkain/ESPSomfy-RTS-enhanced.svg?style=for-the-badge)](https://github.com/xkain/ESPSomfy-RTS-enhanced/releases) [![GitHub Activity](https://img.shields.io/github/last-commit/xkain/ESPSomfy-RTS-enhanced/main?style=for-the-badge)](https://github.com/xkain/ESPSomfy-RTS-enhanced/commits/main) [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/default)
 <br />
-[![License](https://img.shields.io/github/license/xkain/ESPSomfy-RTS-HA-enhanced.svg?style=for-the-badge)](LICENSE) [![Project Maintenance](https://img.shields.io/badge/maintainer-xkain-blue.svg?style=for-the-badge)](https://github.com/xkain) [![GitHub stars](https://img.shields.io/github/stars/xkain/ESPSomfy-RTS-HA-enhanced?style=for-the-badge&logo=github&color=blue)](https://github.com/xkain/ESPSomfy-RTS-HA-enhanced/stargazers)
+[![License](https://img.shields.io/github/license/xkain/ESPSomfy-RTS-enhanced.svg?style=for-the-badge)](LICENSE) [![Project Maintenance](https://img.shields.io/badge/maintainer-xkain-blue.svg?style=for-the-badge)](https://github.com/xkain) [![GitHub stars](https://img.shields.io/github/stars/xkain/ESPSomfy-RTS-enhanced?style=for-the-badge&logo=github&color=blue)](https://github.com/xkain/ESPSomfy-RTS-enhanced/stargazers)
 
 <br />
 
-<img src="https://github.com/xkain/ESPSomfy-RTS/blob/main/images/banniereRTS-ha.png" alt="ESPSomfy-RTS-HA Banner" width="100%">
+<img src="https://github.com/xkain/ESPSomfy-RTS/blob/main/images/banniereESPSomfy-RTS-enhanced.png" alt="ESPSomfy-RTS-HA Banner" width="100%">
 
 <br />
 <br />
@@ -20,9 +20,9 @@
 
 Une intégration Home Assistant personnalisée (Fork) permettant de contrôler et de suivre précisément vos volets roulants, stores, porte de garage, portail et autres équipements utilisant le protocole RTS 433 MHz.
 
-### [Explorer la documentation »](https://github.com/xkain/ESPSomfy-RTS-HA-enhanced/wiki)
+### [Explorer la documentation »](https://github.com/xkain/ESPSomfy-RTS-enhanced/wiki)
 
-**[Signaler un Bug](https://github.com/xkain/ESPSomfy-RTS-HA-enhanced/issues) · [Request Feature](https://github.com/xkain/ESPSomfy-RTS-HA-enhanced/pulls)**
+**[Signaler un Bug](https://github.com/xkain/ESPSomfy-RTS-enhanced/issues) · [Request Feature](https://github.com/xkain/ESPSomfy-RTS-enhanced/pulls)**
 
 </div>
 
@@ -42,16 +42,29 @@ Pour assembler et configurer ce matériel, veuillez vous référer au wiki du d�
 ## Installation
 
 ### Méthode 1 : Via HACS (Recommandée)
-L'installation la plus simple se fait en ajoutant ce dépôt comme [Dépôt Personnalisé (Custom Repository)](https://hacs.xyz/docs/faq/custom_repositories/) dans HACS :
+Cette intégration est disponible directement dans le dépôt par défaut de HACS ✅
 
-1. Allez dans **HACS** → **Intégrations**.
-2. Cliquez sur les **3 points** en haut à droite et sélectionnez **Dépôts personnalisés**.
-3. Ajoutez l'URL suivante : `https://github.com/xkain/ESPSomfy-RTS-enhanced`
-4. Sélectionnez **Intégration** comme catégorie, puis cliquez sur **Ajouter**.
-5. Téléchargez et installez l'intégration.
+1. Cliquez sur le badge **"Open your Home Assistant instance..."** ci-dessus,
+   ou allez dans **HACS** → **Intégrations** → **Explorer & télécharger des dépôts**.
+2. Recherchez **"ESPSomfy-RTS Enhanced"**.
+3. Cliquez sur **Télécharger**, puis redémarrez Home Assistant.
 
 ### Méthode 2 : Installation Manuelle
-Copiez simplement le contenu du dossier `custom_components/espsomfy_rts_enhanced/` et collez-le dans le répertoire `config/custom_components/espsomfy_rts_enhanced/` de votre instance Home Assistant.
+Copiez simplement le contenu du dossier `custom_components/espsomfy_rts_enhanced/` et collez-le dans le répertoire `config/custom_components/espsomfy_rts_enhanced/` de votre instance Home Assistant et Redémarrez
+
+---
+
+## Migration depuis l'intégration d'origine (`ESPSomfy-RTS-HA`)
+
+Si vous utilisez déjà l'intégration originale de **rstrouse**, le passage vers **ESPSomfy-RTS Enhanced** se fait **sans aucune perte de données, d'historique ou d'automatisations**. Vos appareils conservent leurs identifiants uniques dans Home Assistant.
+
+### Procédure de migration rapide :
+1. **Par précaution :** Notez ou faites une capture d'écran du nom de vos entités actuelles.
+2. Supprimez l'ancienne intégration `ESPSomfy-RTS-HA` depuis **HACS** (ou supprimez le dossier `custom_components/espsomfy_rts`).
+3. Redémarrez Home Assistant.
+4. Installez **ESPSomfy-RTS Enhanced** via HACS.
+5. Redémarrez à nouveau Home Assistant.
+6. Renommez si besoin vos entités à l'identique pour que tous vos tableaux de bord, automatisations et scripts fonctionnent à nouveau.
 
 ### Configuration initiale
 Une fois installée et Home Assistant redémarré, l'intégration **détectera automatiquement** vos modules radio présents sur le réseau local. Rendez-vous simplement dans **Paramètres** → **Appareils et services** : votre équipement ESPSomfy-RTS y apparaîtra prêt à être configuré.
@@ -98,4 +111,4 @@ L'intégration émet des événements sur le bus de Home Assistant pour chaque c
 
 ##  Automatisations et Services
 
-De nombreux services spécifiques sont mis à votre disposition pour enrichir vos automatisations. Consultez les exemples d'utilisation directement dans la section [Services du Wiki](https://github.com/xkain/ESPSomfy-RTS-HA-enhanced/wiki/Services).
+De nombreux services spécifiques sont mis à votre disposition pour enrichir vos automatisations. Consultez les exemples d'utilisation directement dans la section [Services du Wiki](https://github.com/xkain/ESPSomfy-RTS-enhanced/wiki/Services).
